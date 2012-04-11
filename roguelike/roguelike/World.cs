@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace roguelike
+namespace Roguelike
 {
     class World
     {

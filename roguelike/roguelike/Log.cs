@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
 
-namespace roguelike
+namespace Roguelike.Log
 {
     class Log
     {
-        private StreamWriter log;
+        private static StreamWriter log;
         public Log()
         {
             log = new StreamWriter("log.txt");
@@ -13,17 +13,17 @@ namespace roguelike
 
         public void Error(String s)
         {
-            log.Write("ERROR {0}", s);
+            log.WriteLine("ERROR {0}", s);
         }
 
         public void Warning(String s)
         {
-            log.Write("WARNING {0}", s);
+            log.WriteLine("WARNING {0}", s);
         }
 
         public void Info(String s)
         {
-            log.Write("INFO {0}", s);
+            log.WriteLine("INFO {0}", s);
         }
     }
 }

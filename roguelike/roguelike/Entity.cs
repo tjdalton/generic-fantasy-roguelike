@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace roguelike
+namespace Roguelike
 {
     
 
@@ -37,7 +37,7 @@ namespace roguelike
         private int currentHP;
         private int maxHP;
 
-        enum CharacterClass
+        public enum CharacterClass
         {
             Fighter, Wizard, Cleric, Rogue
         }

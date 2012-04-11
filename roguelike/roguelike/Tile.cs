@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace roguelike
+namespace Roguelike
 {
     class Tile
     {
