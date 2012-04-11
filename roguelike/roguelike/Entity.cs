@@ -28,7 +28,7 @@ namespace roguelike
     //        Type = t;
     //        Name = n;
     //        Colour = c;
-    //    }
+    //    }s
     //}
     class Entity
     {
