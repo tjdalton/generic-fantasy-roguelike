@@ -6,8 +6,6 @@ namespace Roguelike
 {
     class Tile
     {
-        //private Entity mob;
-        //Queue<Item> contents;
         public enum TileType { Floor = 46, Wall = 35, OpenDoor = 47, ClosedDoor = 43, StairsDown = 62, StairsUp = 60 };
 
 
