@@ -4,32 +4,6 @@ using System.Collections.Generic;
 namespace Roguelike
 {
 
-
-    //struct CharacterClass
-    //{
-    //    public ClassType Type
-    //    {
-    //        get;
-    //        set;
-    //    }
-    //    public String Name
-    //    {
-    //        get;
-    //        set;
-    //    }
-    //    public ConsoleColor Colour
-    //    {
-    //        get;
-    //        set;
-    //    }
-
-    //    public CharacterClass(ClassType t, String n, ConsoleColor c)
-    //    {
-    //        Type = t;
-    //        Name = n;
-    //        Colour = c;
-    //    }
-    //}
     class Entity
     {
         private List<Item> inventory;
@@ -37,22 +11,13 @@ namespace Roguelike
         private int currentHP;
         private int maxHP;
 
-        //public enum CharacterClass
-        //{
-        //    Fighter, Wizard, Cleric, Rogue
-        //}
-
-        public Entity(char c)
+        public Entity(Races.Race r)
         {
-            Icon = c;
             X = 1;
             Y = 1;
-            String tmp = GenerateId();
+            UniqueId = GenerateId();
             inventory = new List<Item>();
             stats = new Dictionary<String, int>();
-            Description = "an angry looking Orc";
-            //ids.push_front(tmp);
-            UniqueId = tmp;
             stats.Add("STR", 25);
             stats.Add("CON", 12);
             stats.Add("DEX", 9);
@@ -61,8 +26,8 @@ namespace Roguelike
             stats.Add("CHA", 5);
             maxHP = stats["CON"];
             currentHP = maxHP;
-            if (c == '@')
-                Class = new Classes.Wizard();
+            Class = new Classes.Wizard();
+            Race = r;
         }
 
         public void Fight(Entity e)
@@ -78,10 +43,21 @@ namespace Roguelike
             get;
             set;
         }
+        public bool Player
+        {
+            get;
+            set;
+        }
         public int DungeonLevel
         {
             get;
             set;
+        }
+
+        public Races.Race Race
+        {
+            get;
+            private set;
         }
 
         public void Damage(int i)
@@ -95,20 +71,32 @@ namespace Roguelike
         }
         public char Icon
         {
-            get;
-            set;
+            get
+            {
+                if (Player)
+                    return '@';
+                else
+                    return Race.Icon;
+            }
         }
 
         public ConsoleColor Colour
         {
-            get;
-            set;
+            get
+            {
+                if (Race.Playable)
+                    return Class.Colour;
+                else
+                    return Race.Colour;
+            }
         }
 
         public String Description
         {
-            get;
-            set;
+            get
+            {
+                return Race.Description;
+            }
         }
         public String Name
         {

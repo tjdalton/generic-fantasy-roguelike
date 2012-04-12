@@ -32,7 +32,8 @@ namespace Roguelike
             game = g;
             mobs = new List<Entity>();
             msgQueue = new Queue<String>();
-            Player = new Entity('@');
+            Player = new Entity(new Races.Human());
+            Player.Player = true;
             Player.SetPos(5, 5);
             for (int i = 0; i < 20; i++)
             {
