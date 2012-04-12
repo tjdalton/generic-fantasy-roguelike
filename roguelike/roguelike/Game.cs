@@ -65,9 +65,9 @@ namespace Roguelike
         public void Populate()
         {
             world.GetCell(5, 5).Mob = world.Player;
-            world.Player.Colour = ConsoleColor.Cyan;
-            Entity tmp = new Entity('o');
-            tmp.Colour = ConsoleColor.Green;
+            //world.Player.Colour = ConsoleColor.Cyan;
+            Entity tmp = new Entity(new Races.Orc());
+           // tmp.Colour = ConsoleColor.Green;
             tmp.Name = "Orc";
             tmp.SetPos(10, 10);
             world.GetCell(10, 10).Mob = tmp;
