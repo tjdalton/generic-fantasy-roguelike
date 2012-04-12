@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Roguelike
 {
-    
+
 
     //struct CharacterClass
     //{
@@ -37,10 +37,10 @@ namespace Roguelike
         private int currentHP;
         private int maxHP;
 
-        public enum CharacterClass
-        {
-            Fighter, Wizard, Cleric, Rogue
-        }
+        //public enum CharacterClass
+        //{
+        //    Fighter, Wizard, Cleric, Rogue
+        //}
 
         public Entity(char c)
         {
@@ -62,7 +62,7 @@ namespace Roguelike
             maxHP = stats["CON"];
             currentHP = maxHP;
             if (c == '@')
-                Class = CharacterClass.Wizard;
+                Class = new Classes.Wizard();
         }
 
         public void Fight(Entity e)
@@ -73,7 +73,7 @@ namespace Roguelike
                 World.AddMessage("You swing mightily at the " + e.Name);
             }
         }
-        public CharacterClass Class
+        public Classes.Class Class
         {
             get;
             set;
