@@ -24,6 +24,8 @@ namespace Roguelike.Log
         public void Info(String s)
         {
             log.WriteLine("INFO {0}", s);
+            //log.WriteLine("SDSD");
+            log.Close();
         }
     }
 }

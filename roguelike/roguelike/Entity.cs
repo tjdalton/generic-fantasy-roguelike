@@ -10,6 +10,7 @@ namespace Roguelike
         private Dictionary<String, int> stats;
         private int currentHP;
         private int maxHP;
+        private String name;
 
         public Entity(Races.Race r)
         {
@@ -100,8 +101,14 @@ namespace Roguelike
         }
         public String Name
         {
-            get;
-            set;
+            get
+            {
+                if (Race.Playable)
+                    return name;
+                else
+                    return Race.Name;
+            }
+            set { name = value; }
         }
 
         public int X

@@ -28,7 +28,7 @@ namespace Roguelike
                         world.Level = k;
                         if (i == 0 || j == 0 || i == 19 || j == 59)
                         {
-                            world.GetCell(i, j).Type = Tile.TileType.Wall;
+                            world.SetCell(i, j, new Tiles.Wall());
                         }
                     }
                 }
@@ -65,19 +65,17 @@ namespace Roguelike
         public void Populate()
         {
             world.GetCell(5, 5).Mob = world.Player;
-            //world.Player.Colour = ConsoleColor.Cyan;
             Entity tmp = new Entity(new Races.Orc());
-           // tmp.Colour = ConsoleColor.Green;
-            tmp.Name = "Orc";
+           // tmp.Name = "Orc";
             tmp.SetPos(10, 10);
             world.GetCell(10, 10).Mob = tmp;
             world.AddMob(tmp);
             world.GetCell(5, 5).Mob.SetPos(5, 5);
             world.GetCell(9, 3).AddContents(new Item('='));
             world.GetCell(9, 3).Contents.Peek().Colour = ConsoleColor.Magenta;
-            world.GetCell(15, 10).Type = Tile.TileType.StairsDown;
+            world.SetCell(15, 10, new Tiles.StairsDown());
             world.Level = 1;
-            world.GetCell(15, 10).Type = Tile.TileType.StairsUp;
+            world.SetCell(15, 10, new Tiles.StairsUp());
             world.Level = 0;
             PrintWorld();
 
