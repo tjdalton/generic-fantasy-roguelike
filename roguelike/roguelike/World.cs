@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Roguelike.Tiles;
 namespace Roguelike
 {
     class World
@@ -13,6 +13,11 @@ namespace Roguelike
         public Tile GetCell(int i, int j)
         {
             return grid[i, j, Level];
+        }
+
+        public void SetCell(int i, int j, Tile t)
+        {
+            grid[i, j, Level] = t;
         }
 
         public Entity Player
@@ -42,7 +47,7 @@ namespace Roguelike
                     for (int k = 0; k < 30; k++)
                     {
                         Level = k;
-                        grid[i, j, Level] = new Tile();
+                        grid[i, j, Level] = new Tiles.Floor();
                     }
                 }
             }
@@ -88,7 +93,7 @@ namespace Roguelike
         }
         public void ChangeLevel()
         {
-            if (GetCell(Player.Y, Player.X).Type == Tile.TileType.StairsDown)
+            if (GetCell(Player.Y, Player.X).GetType().ToString() == "Roguelike.Tiles.StairsDown")
             {
                 if (Level < 30)
                 {
@@ -99,7 +104,7 @@ namespace Roguelike
                     game.PrintWorld();
                 }
             }
-            else if (GetCell(Player.Y, Player.X).Type == Tile.TileType.StairsUp)
+            else if (GetCell(Player.Y, Player.X).GetType().ToString() == "Roguelike.Tiles.StairsUp")
             {
                 if (Level >= 1)
                 {
