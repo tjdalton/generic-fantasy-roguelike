@@ -13,10 +13,10 @@ namespace Roguelike.Classes
             get { return ConsoleColor.DarkMagenta; }
         }
 
-        public Wizard()
+        internal Wizard()
         {
             abilities = new List<Abilities.Ability>();
-            abilities.Add(new Abilities.MagicMissile());
+            abilities.Add(Abilities.Ability.CreateAbility(Abilities.Ability.Abilities.MagicMissile));
         }
 
         public override int HPModifier

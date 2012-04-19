@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Roguelike.Items;
+using Roguelike.Classes;
 
 namespace Roguelike
 {
@@ -27,7 +29,7 @@ namespace Roguelike
             stats.Add("CHA", 5);
             maxHP = stats["CON"];
             currentHP = maxHP;
-            Class = new Classes.Wizard();
+            Class = Class.CreateClass(Class.Classes.Wizard);
             Race = r;
         }
 

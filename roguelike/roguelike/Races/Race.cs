@@ -9,12 +9,27 @@ namespace Roguelike.Races
     abstract class Race
     {
         List<Abilities.Ability> abilities;
-
+        public enum Races
+        {
+            Human,
+            Orc
+        };
         public abstract bool Playable
         {
             get;
         }
-
+        public static Race CreateRace(Races r)
+        {
+            switch (r)
+            {
+                case Races.Human:
+                    return new Human();
+                case Races.Orc:
+                    return new Orc();
+                default:
+                    return new Human();
+            }
+        }
         public abstract char Icon
         {
             get;

@@ -8,11 +8,24 @@ namespace Roguelike.Abilities
 {
     abstract class Ability
     {
+        public enum Abilities
+        {
+            MagicMissile
+        };
         public abstract String Name
         {
             get;
         }
-
+        public static Ability CreateAbility(Abilities a)
+        {
+            switch (a)
+            {
+                case Abilities.MagicMissile:
+                    return new MagicMissile();
+                default:
+                    return new MagicMissile();
+            }
+        }
         public abstract int LevelRequired
         {
             get;
