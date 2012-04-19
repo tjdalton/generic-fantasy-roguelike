@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Roguelike.Items;
 
 namespace Roguelike.Tiles
 {
     class Floor : Tile
     {
-        public Floor()
+        internal Floor()
         {
             Contents = new Queue<Item>();
             icon = '.';

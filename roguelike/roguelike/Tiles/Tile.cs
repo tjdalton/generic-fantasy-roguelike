@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Roguelike.Items;
 
 namespace Roguelike.Tiles
 {
@@ -8,12 +9,37 @@ namespace Roguelike.Tiles
     {
         protected char icon;
         protected String description = "";
+        public enum Tiles
+        {
+            Door,
+            Floor,
+            StairsDown,
+            StairsUp,
+            Wall
+        };
 
         abstract public char Icon
         {
             get;
         }
-
+        public static Tile CreateTile(Tiles t)
+        {
+            switch (t)
+            {
+                //case Tiles.Door:
+                //    return new Door();
+                case Tiles.Floor:
+                    return new Floor();
+                case Tiles.StairsDown:
+                    return new StairsDown();
+                case Tiles.StairsUp:
+                    return new StairsUp();
+                case Tiles.Wall:
+                    return new Wall();
+                default:
+                    return new Floor();
+            }
+        }
         public String Description
         {
             get

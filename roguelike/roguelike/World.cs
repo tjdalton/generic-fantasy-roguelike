@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Roguelike.Tiles;
+using Roguelike.Items;
+using Roguelike.Races;
 namespace Roguelike
 {
     class World
@@ -37,7 +39,7 @@ namespace Roguelike
             game = g;
             mobs = new List<Entity>();
             msgQueue = new Queue<String>();
-            Player = new Entity(new Races.Human());
+            Player = new Entity(Race.CreateRace(Race.Races.Human));
             Player.Player = true;
             Player.SetPos(5, 5);
             for (int i = 0; i < 20; i++)
@@ -47,7 +49,7 @@ namespace Roguelike
                     for (int k = 0; k < 30; k++)
                     {
                         Level = k;
-                        grid[i, j, Level] = new Tiles.Floor();
+                        grid[i, j, Level] = Tile.CreateTile(Tile.Tiles.Floor);
                     }
                 }
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Roguelike.Items;
 
 namespace Roguelike.Tiles
 {
@@ -29,7 +30,7 @@ namespace Roguelike.Tiles
             }
         }
 
-        public StairsDown()
+        internal StairsDown()
         {
             icon = '>';
             description = "There are stairs leading down here";

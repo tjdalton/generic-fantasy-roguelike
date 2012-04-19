@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Roguelike.Items;
+using Roguelike.Races;
+using Roguelike.Tiles;
 namespace Roguelike
 {
     class Game
@@ -28,7 +31,7 @@ namespace Roguelike
                         world.Level = k;
                         if (i == 0 || j == 0 || i == 19 || j == 59)
                         {
-                            world.SetCell(i, j, new Tiles.Wall());
+                            world.SetCell(i, j, Tile.CreateTile(Tile.Tiles.Wall));
                         }
                     }
                 }
@@ -65,17 +68,15 @@ namespace Roguelike
         public void Populate()
         {
             world.GetCell(5, 5).Mob = world.Player;
-            Entity tmp = new Entity(new Races.Orc());
-           // tmp.Name = "Orc";
+            Entity tmp = new Entity(Race.CreateRace(Race.Races.Orc));
             tmp.SetPos(10, 10);
             world.GetCell(10, 10).Mob = tmp;
             world.AddMob(tmp);
             world.GetCell(5, 5).Mob.SetPos(5, 5);
-            world.GetCell(9, 3).AddContents(new Item('='));
-            world.GetCell(9, 3).Contents.Peek().Colour = ConsoleColor.Magenta;
-            world.SetCell(15, 10, new Tiles.StairsDown());
+            world.GetCell(9, 3).AddContents(Item.CreateItem(Item.Items.StrengthPotion));
+            world.SetCell(15, 10, Tile.CreateTile(Tile.Tiles.StairsDown));
             world.Level = 1;
-            world.SetCell(15, 10, new Tiles.StairsUp());
+            world.SetCell(15, 10, Tile.CreateTile(Tile.Tiles.StairsUp));
             world.Level = 0;
             PrintWorld();
 

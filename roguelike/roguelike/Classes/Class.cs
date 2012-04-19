@@ -6,25 +6,40 @@ using System.Threading.Tasks;
 
 namespace Roguelike.Classes
 {
-   abstract class Class
+    abstract class Class
     {
-       protected List<Abilities.Ability> abilities;
+        protected List<Abilities.Ability> abilities;
+        public enum Classes
+        {
+            Wizard
+        };
 
-       public abstract ConsoleColor Colour
-       {
-           get;
-       }
+        public abstract ConsoleColor Colour
+        {
+            get;
+        }
 
-       public abstract void HandleInput(World w, ConsoleKeyInfo c);
+        public static Class CreateClass(Classes c)
+        {
+            switch (c)
+            {
+                case Classes.Wizard:
+                    return new Wizard();
+                default:
+                    return new Wizard();
+            }
+        }
 
-       public abstract int HPModifier
-       {
-           get;
-       }
+        public abstract void HandleInput(World w, ConsoleKeyInfo c);
 
-       public abstract String Name
-       {
-           get;
-       }
+        public abstract int HPModifier
+        {
+            get;
+        }
+
+        public abstract String Name
+        {
+            get;
+        }
     }
 }
