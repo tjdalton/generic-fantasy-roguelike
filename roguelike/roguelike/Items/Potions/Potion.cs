@@ -18,9 +18,12 @@ namespace Roguelike.Items.Potions
            get;
        }
 
-       public abstract override string Description
+       public override double Weight
        {
-           get;
+           get {return 0.1; }
        }
+
+       public abstract override void Use(Entity e);
+
     }
 }

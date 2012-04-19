@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Roguelike.Items;
 using Roguelike.Classes;
+using Roguelike.Races;
 
 namespace Roguelike
 {
@@ -14,7 +15,7 @@ namespace Roguelike
         private int maxHP;
         private String name;
 
-        public Entity(Races.Race r)
+        public Entity(Race r)
         {
             X = 1;
             Y = 1;
@@ -33,6 +34,15 @@ namespace Roguelike
             Race = r;
         }
 
+        public Entity(Race r, World w):this(r)
+        {
+            World = w;
+        }
+        public World World
+        {
+            get;
+            private set;
+        }
         public void Fight(Entity e)
         {
             if (e.Icon != '@')
@@ -40,6 +50,12 @@ namespace Roguelike
                 e.Damage(5);
                 World.AddMessage("You swing mightily at the " + e.Name);
             }
+        }
+        public void ModifyStat(String s, int i)
+        {
+            stats[s] += i;
+            if (stats[s] <= 0)
+                stats[s] = 1;
         }
         public Classes.Class Class
         {
@@ -131,6 +147,13 @@ namespace Roguelike
             Y = j;
         }
 
+        public List<Item> Inventory
+        {
+            get
+            {
+                return inventory;
+            }
+        }
         public String UniqueId
         {
             get;
