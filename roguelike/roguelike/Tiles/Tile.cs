@@ -15,9 +15,13 @@ namespace Roguelike.Tiles
             Floor,
             StairsDown,
             StairsUp,
-            Wall
+            Wall,
         };
-
+        public bool Open
+        {
+            get;
+            set;
+        }
         abstract public char Icon
         {
             get;
@@ -26,8 +30,8 @@ namespace Roguelike.Tiles
         {
             switch (t)
             {
-                //case Tiles.Door:
-                //    return new Door();
+                case Tiles.Door:
+                    return new Door();
                 case Tiles.Floor:
                     return new Floor();
                 case Tiles.StairsDown:

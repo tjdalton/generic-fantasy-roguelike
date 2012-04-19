@@ -74,6 +74,7 @@ namespace Roguelike
             world.AddMob(tmp);
             world.GetCell(5, 5).Mob.SetPos(5, 5);
             world.GetCell(9, 3).AddContents(Item.CreateItem(Item.Items.StrengthPotion));
+            world.GetCell(5, 25).AddContents(Item.CreateItem(Item.Items.WaterPotion));
             world.SetCell(15, 10, Tile.CreateTile(Tile.Tiles.StairsDown));
             world.Level = 1;
             world.SetCell(15, 10, Tile.CreateTile(Tile.Tiles.StairsUp));

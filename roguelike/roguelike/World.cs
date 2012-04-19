@@ -39,7 +39,7 @@ namespace Roguelike
             game = g;
             mobs = new List<Entity>();
             msgQueue = new Queue<String>();
-            Player = new Entity(Race.CreateRace(Race.Races.Human));
+            Player = new Entity(Race.CreateRace(Race.Races.Human), this);
             Player.Player = true;
             Player.SetPos(5, 5);
             for (int i = 0; i < 20; i++)
@@ -152,6 +152,10 @@ namespace Roguelike
                 case ConsoleKey.NumPad9:
                     MoveMob(e.X + 1, e.Y - 1, e);
                     break;
+                case ConsoleKey.Q:
+                    if (c.Modifiers != ConsoleModifiers.Shift)
+                        Quaff();
+                    break;
                 case ConsoleKey.OemComma:
                     if (c.Modifiers != ConsoleModifiers.Shift)
                         PickUp(e);
@@ -223,7 +227,14 @@ namespace Roguelike
 
             return tmp;
         }
-
+        public void ClearConsole()
+        {
+            game.ClearConsole(0, 24, 0, 80);
+        }
+        public void PrintWorld()
+        {
+            game.PrintWorld();
+        }
         public void AddMob(Entity e)
         {
             mobs.Add(e);
@@ -267,6 +278,12 @@ namespace Roguelike
             }
         }
 
+        public void Quaff()
+        {
+            Item.DisplayInventory(Player);
+            game.ClearConsole(20, 25, 0, 80);
+            game.PrintWorld();
+        }
         static public void AddMessage(String s)
         {
             msgQueue.Enqueue(s);

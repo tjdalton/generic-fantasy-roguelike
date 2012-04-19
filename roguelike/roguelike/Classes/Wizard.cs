@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Roguelike.Abilities;
 
 namespace Roguelike.Classes
 {
@@ -15,8 +16,8 @@ namespace Roguelike.Classes
 
         internal Wizard()
         {
-            abilities = new List<Abilities.Ability>();
-            abilities.Add(Abilities.Ability.CreateAbility(Abilities.Ability.Abilities.MagicMissile));
+            abilities = new List<Ability>();
+            abilities.Add(Ability.CreateAbility(Ability.Abilities.MagicMissile));
         }
 
         public override int HPModifier

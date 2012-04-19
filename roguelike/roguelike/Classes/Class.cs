@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Roguelike.Abilities;
 
 namespace Roguelike.Classes
 {
     abstract class Class
     {
-        protected List<Abilities.Ability> abilities;
+        protected List<Ability> abilities;
         public enum Classes
         {
             Wizard
