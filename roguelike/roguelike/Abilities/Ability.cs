@@ -10,7 +10,9 @@ namespace Roguelike.Abilities
     {
         public enum Abilities
         {
-            MagicMissile
+            MagicMissile,
+            StrengthBuff,
+            DefaultAbility
         };
         public abstract String Name
         {
@@ -22,8 +24,10 @@ namespace Roguelike.Abilities
             {
                 case Abilities.MagicMissile:
                     return new MagicMissile();
+                case Abilities.StrengthBuff:
+                    return new StrengthBuff();
                 default:
-                    return new MagicMissile();
+                    return new DefaultAbility();
             }
         }
         public abstract int LevelRequired
@@ -32,5 +36,7 @@ namespace Roguelike.Abilities
         }
 
         public abstract void Invoke(World w, Entity invoker, int direction);
+
+        public abstract void Invoke(Entity invoker, Items.Item item);
     }
 }

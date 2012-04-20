@@ -6,26 +6,27 @@ using System.Threading.Tasks;
 
 namespace Roguelike.Abilities
 {
-    class MagicMissile : Ability
+    class StrengthBuff : Ability
     {
         public override string Name
         {
-            get { return "Magic Missile"; }
+            get { return "Strength Buff"; }
         }
 
         public override int LevelRequired
         {
             get { return 1; }
         }
-
-        public override void Invoke(Entity invoker, Items.Item item)
+        public override void Invoke(World w, Entity invoker, int direction)
         {
             throw new NotImplementedException();
         }
 
-        public override void Invoke(World w, Entity invoker, int direction)
+        public override void Invoke(Entity invoker, Items.Item item)
         {
-            throw new NotImplementedException();
+            invoker.ModifyStat("STR", 5);
+            invoker.Inventory.Remove(item);
+            World.AddMessage(item.UseText);
         }
     }
 }

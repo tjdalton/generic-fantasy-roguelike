@@ -7,6 +7,8 @@ namespace Roguelike.Items
     {
         protected String unidentifiedDesc = "";
         protected String identifiedDesc = "";
+        protected List<Abilities.Ability> abilities;
+        protected String actionDescription = "";
         public enum Items
         {
             StrengthPotion,
@@ -26,7 +28,7 @@ namespace Roguelike.Items
             }
         }
 
-        public static void DisplayInventory(Entity e)
+        public static void DisplayInventory(Entity e, Type t)
         {
             Dictionary<char, Item> list = new Dictionary<char, Item>();
             e.World.ClearConsole();
@@ -37,7 +39,7 @@ namespace Roguelike.Items
             int y = 5;
             foreach (Item tmp in e.Inventory)
             {
-                if (tmp.Useable)
+                if (t.IsAssignableFrom(tmp.GetType()))
                 {
                     list.Add((char)i, tmp);
                     Console.SetCursorPosition(x, y);
@@ -101,6 +103,14 @@ namespace Roguelike.Items
                     return identifiedDesc;
                 else
                     return unidentifiedDesc;
+            }
+        }
+
+        public String UseText
+        {
+            get
+            {
+                return actionDescription;
             }
         }
         public abstract ConsoleColor Colour
