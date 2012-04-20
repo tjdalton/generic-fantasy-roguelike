@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Roguelike.Abilities;
 
 namespace Roguelike.Items.Potions
 {
@@ -17,14 +18,10 @@ namespace Roguelike.Items.Potions
         {
             unidentifiedDesc = "a murky red potion";
             identifiedDesc = "A Potion of Strength";
+            actionDescription = "You feel strength course through you";
             Useable = true;
-        }
-
-        public override void Use(Entity e)
-        {
-            e.ModifyStat("STR", 5);
-            e.Inventory.Remove(this);
-            World.AddMessage("You drink the potion, and feel stronger");
+            abilities = new List<Ability>();
+            abilities.Add(Ability.CreateAbility(Ability.Abilities.StrengthBuff));
         }
     }
 }

@@ -23,7 +23,13 @@ namespace Roguelike.Items.Potions
            get {return 0.1; }
        }
 
-       public abstract override void Use(Entity e);
+       public override void Use(Entity e)
+       {
+           foreach (Abilities.Ability tmp in abilities)
+           {
+               tmp.Invoke(e, this);
+           }
+       }
 
     }
 }

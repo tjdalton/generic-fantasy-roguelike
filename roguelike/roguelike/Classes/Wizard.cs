@@ -16,6 +16,7 @@ namespace Roguelike.Classes
 
         internal Wizard()
         {
+            shortName = "Wiz";
             abilities = new List<Ability>();
             abilities.Add(Ability.CreateAbility(Ability.Abilities.MagicMissile));
         }

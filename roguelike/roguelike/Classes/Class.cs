@@ -10,6 +10,7 @@ namespace Roguelike.Classes
     abstract class Class
     {
         protected List<Ability> abilities;
+        protected String shortName = "";
         public enum Classes
         {
             Wizard
@@ -41,6 +42,11 @@ namespace Roguelike.Classes
         public abstract String Name
         {
             get;
+        }
+
+        public String ShortName
+        {
+            get { return shortName; }
         }
     }
 }

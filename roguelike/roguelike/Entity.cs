@@ -14,6 +14,7 @@ namespace Roguelike
         private int currentHP;
         private int maxHP;
         private String name;
+        private int currentXP = 0;
 
         public Entity(Race r)
         {
@@ -116,6 +117,18 @@ namespace Roguelike
             {
                 return Race.Description;
             }
+        }
+
+        public int Level
+        {
+            get
+            {
+                if (currentXP <= 1000)
+                    return 1;
+                else
+                    return currentXP / 1000;
+            }
+
         }
         public String Name
         {

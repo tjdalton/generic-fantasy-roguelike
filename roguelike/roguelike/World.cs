@@ -95,7 +95,7 @@ namespace Roguelike
         }
         public void ChangeLevel()
         {
-            if (GetCell(Player.Y, Player.X).GetType().ToString() == "Roguelike.Tiles.StairsDown")
+            if (GetCell(Player.Y, Player.X).GetType() == typeof(Tiles.StairsDown))
             {
                 if (Level < 30)
                 {
@@ -106,7 +106,7 @@ namespace Roguelike
                     game.PrintWorld();
                 }
             }
-            else if (GetCell(Player.Y, Player.X).GetType().ToString() == "Roguelike.Tiles.StairsUp")
+            else if (GetCell(Player.Y, Player.X).GetType() == typeof(Tiles.StairsUp))
             {
                 if (Level >= 1)
                 {
@@ -252,17 +252,21 @@ namespace Roguelike
 
         public void DisplayStats()
         {
-            Console.SetCursorPosition(66, 1);
-            Console.Write(Player.GetStat("STR"));
-            Console.SetCursorPosition(66, 2);
-            Console.Write(Player.GetStat("DEX"));
+            Console.SetCursorPosition(61, 0);
+            Console.Write(Player.Name);
+            Console.SetCursorPosition(61, 1);
+            Console.Write("{0}  Lv. {1}", Player.Class.Name, Player.Level);
             Console.SetCursorPosition(66, 3);
-            Console.Write(Player.GetStat("CON"));
+            Console.Write(Player.GetStat("STR"));
             Console.SetCursorPosition(66, 4);
-            Console.Write(Player.GetStat("INT"));
+            Console.Write(Player.GetStat("DEX"));
             Console.SetCursorPosition(66, 5);
-            Console.Write(Player.GetStat("WIS"));
+            Console.Write(Player.GetStat("CON"));
             Console.SetCursorPosition(66, 6);
+            Console.Write(Player.GetStat("INT"));
+            Console.SetCursorPosition(66, 7);
+            Console.Write(Player.GetStat("WIS"));
+            Console.SetCursorPosition(66, 8);
             Console.Write(Player.GetStat("CHA"));
         }
 
@@ -280,7 +284,7 @@ namespace Roguelike
 
         public void Quaff()
         {
-            Item.DisplayInventory(Player);
+            Item.DisplayInventory(Player, typeof (Items.Potions.Potion));
             game.ClearConsole(20, 25, 0, 80);
             game.PrintWorld();
         }
